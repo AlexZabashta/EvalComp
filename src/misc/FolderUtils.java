@@ -12,14 +12,20 @@ public class FolderUtils {
 
     public static String buildPath(boolean clearLast, String... path) {
         int len = path.length;
-        if (len == 0) {
-            throw new RuntimeException("Path to folder is empty");
-        }
 
         int last = len - 1;
 
         String resultPath = RESULT_FOLDER + File.separator;
         resultPath += getClassName() + File.separator;
+
+        File root = new File(resultPath);
+        if (root.exists()) {
+            if (!root.isDirectory()) {
+                throw new RuntimeException(resultPath + " does not lead to a folder");
+            }
+        } else {
+            createFolder(root);
+        }
 
         for (int i = 0; i < len; i++) {
             resultPath += path[i] + File.separator;

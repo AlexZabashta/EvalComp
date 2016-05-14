@@ -9,13 +9,13 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import ru.ifmo.ctlab.ml.core.DoubleVector;
+import ru.ifmo.ctlab.ml.core.data.Instance;
+import ru.ifmo.ctlab.ml.core.data.Type;
+import ru.ifmo.ctlab.ml.core.data.val.NumericValue;
 import ru.ifmo.ctlab.ml.core.feat.AbstractNumericFeature;
 import ru.ifmo.ctlab.ml.core.feat.NumericFeature;
 import ru.ifmo.ctlab.ml.core.feat.PCA;
-import ru.ifmo.ctlab.ml.core.val.Type;
 import ru.ifmo.ctlab.ml.viz.Plotter2D;
-import ru.ifmo.ctlab.ml.core.val.Instance;
-import ru.ifmo.ctlab.ml.core.val.NumericValue;
 
 public class TestPCA {
     public static void main(String[] args) throws IOException {

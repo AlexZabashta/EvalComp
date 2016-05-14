@@ -1,6 +1,6 @@
 package ru.ifmo.ctlab.ml.core.feat;
 
-import ru.ifmo.ctlab.ml.core.val.Instance;
+import ru.ifmo.ctlab.ml.core.data.Instance;
 
 public abstract class AbstractNumericFeature implements NumericFeature {
     public static final double MISSING_VALUE = Double.NaN;

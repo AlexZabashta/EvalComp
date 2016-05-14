@@ -45,12 +45,13 @@ public class GeneticSearch<T extends Measurable> {
             List<T> newGeneration = new ArrayList<T>();
             newGeneration.addAll(generation);
 
-            List<T> parents = selectBest.perfom(generation, numOfChild);
-            List<T> children = crossoverStep.perfom(parents, numOfChild);
+            List<T> parents = rouletteWheel.perfom(generation, numOfChild);
+            List<T> childrens = crossoverStep.perfom(parents, numOfChild);
             numFunctionEval += numOfChild;
-            newGeneration.addAll(children);
+            newGeneration.addAll(childrens);
 
-            List<T> mutants = mutationStep.perfom(newGeneration, numOfMut);
+            List<T> sourse = rouletteWheel.perfom(newGeneration, numOfMut);
+            List<T> mutants = mutationStep.perfom(sourse, numOfMut);
             numFunctionEval += numOfMut;
             newGeneration.addAll(mutants);
 

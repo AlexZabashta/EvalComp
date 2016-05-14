@@ -8,10 +8,10 @@ import java.util.Random;
 
 import ru.ifmo.ctlab.ml.LinearRegression;
 import ru.ifmo.ctlab.ml.core.DoubleVector;
+import ru.ifmo.ctlab.ml.core.data.Instance;
+import ru.ifmo.ctlab.ml.core.data.Type;
+import ru.ifmo.ctlab.ml.core.data.val.NumericValue;
 import ru.ifmo.ctlab.ml.core.feat.NumericFeature;
-import ru.ifmo.ctlab.ml.core.val.Type;
-import ru.ifmo.ctlab.ml.core.val.Instance;
-import ru.ifmo.ctlab.ml.core.val.NumericValue;
 
 public class TestLinearRegression {
 

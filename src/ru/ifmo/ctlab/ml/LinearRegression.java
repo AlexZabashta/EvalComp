@@ -3,8 +3,8 @@ package ru.ifmo.ctlab.ml;
 import java.util.List;
 
 import Jama.Matrix;
+import ru.ifmo.ctlab.ml.core.data.Instance;
 import ru.ifmo.ctlab.ml.core.feat.NumericFeature;
-import ru.ifmo.ctlab.ml.core.val.Instance;
 
 public class LinearRegression {
 

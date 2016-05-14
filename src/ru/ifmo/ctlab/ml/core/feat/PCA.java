@@ -7,7 +7,7 @@ import java.util.List;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
-import ru.ifmo.ctlab.ml.core.val.Instance;
+import ru.ifmo.ctlab.ml.core.data.Instance;
 
 public class PCA {
 

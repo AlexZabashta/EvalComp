@@ -1,7 +1,7 @@
 package ru.ifmo.ctlab.ml.dataset;
 
-import ru.ifmo.ctlab.ml.core.val.Type;
-import ru.ifmo.ctlab.ml.core.val.Instance;
+import ru.ifmo.ctlab.ml.core.data.Instance;
+import ru.ifmo.ctlab.ml.core.data.Type;
 
 public class DoubleVector implements Instance {
 

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ru.ifmo.ctlab.ml.core.data.Instance;
+import ru.ifmo.ctlab.ml.core.data.Type;
+import ru.ifmo.ctlab.ml.core.data.val.NumericValue;
 import ru.ifmo.ctlab.ml.core.feat.AbstractEnumFeature;
 import ru.ifmo.ctlab.ml.core.feat.EnumFeature;
 import ru.ifmo.ctlab.ml.core.feat.NumericFeature;
-import ru.ifmo.ctlab.ml.core.val.Instance;
-import ru.ifmo.ctlab.ml.core.val.NumericValue;
-import ru.ifmo.ctlab.ml.core.val.Type;
 
 public class NumericVector implements Type {
 

@@ -17,13 +17,13 @@ import eval_comp.optimization.gen.GeneticSearch;
 import eval_comp.optimization.result.ReachMaxValue;
 import eval_comp.optimization.result.Result;
 import eval_comp.optimization.result.StoppingCriterion;
+import misc.FolderUtils;
 
 public class Exp13 {
-    static String q = File.separator;
-    static String res = "result" + q + Exp13.class.getSimpleName() + q;
-    static String basePlot = "plot" + q + "cos.png";
 
     public static void main(String[] args) throws IOException {
+        String res = FolderUtils.clearOrCreate();
+
         FitnessFunction fitnessFunction = new FitnessFunction();
         Crossover<Instance> crossover = new TwoPointCrossover();
 

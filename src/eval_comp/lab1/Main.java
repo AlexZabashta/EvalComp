@@ -19,13 +19,14 @@ import eval_comp.optimization.gen.GeneticSearch;
 import eval_comp.optimization.result.FunEvalLimit;
 import eval_comp.optimization.result.Result;
 import eval_comp.optimization.result.StoppingCriterion;
+import misc.FolderUtils;
 
 public class Main {
-    static String q = File.separator;
-    static String res = "result" + q + Main.class.getSimpleName() + q;
-    static String basePlot = "plot" + q + "cos.png";
 
     public static void main(String[] args) throws IOException {
+        String res = FolderUtils.clearOrCreate();
+        String basePlot = FolderUtils.openData("cos.png");
+
         FitnessFunction fitnessFunction = new FitnessFunction();
         Crossover<Instance> crossover = new TwoPointCrossover();
 

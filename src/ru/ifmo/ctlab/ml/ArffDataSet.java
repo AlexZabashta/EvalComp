@@ -3,11 +3,11 @@ package ru.ifmo.ctlab.ml;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.ifmo.ctlab.ml.core.data.Instance;
 import ru.ifmo.ctlab.ml.core.feat.AbstractEnumFeature;
 import ru.ifmo.ctlab.ml.core.feat.AbstractNumericFeature;
 import ru.ifmo.ctlab.ml.core.feat.EnumFeature;
 import ru.ifmo.ctlab.ml.core.feat.NumericFeature;
-import ru.ifmo.ctlab.ml.core.val.Instance;
 import ru.ifmo.ctlab.ml.util.Pair;
 import weka.core.Attribute;
 import weka.core.Instances;

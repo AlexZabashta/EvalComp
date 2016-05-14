@@ -4,9 +4,9 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.Locale;
 
+import ru.ifmo.ctlab.ml.core.data.Instance;
+import ru.ifmo.ctlab.ml.core.data.val.NumericValue;
 import ru.ifmo.ctlab.ml.core.feat.NumericFeature;
-import ru.ifmo.ctlab.ml.core.val.Instance;
-import ru.ifmo.ctlab.ml.core.val.NumericValue;
 
 public class Plotter2D {
 

@@ -1,4 +1,5 @@
 package eval_comp;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,8 +41,10 @@ public class Test {
 
         Mutation<Measurable> mutation = new Mutation<Measurable>() {
             @Override
-            public Measurable mutate(Measurable source, Random random) {
-                return source;
+            public List<Measurable> mutate(Measurable source, Random random) {
+                List<Measurable> mutants = new ArrayList<>();
+                mutants.add(source);
+                return mutants;
             }
         };
 
@@ -62,16 +65,20 @@ public class Test {
         Crossover<Measurable> crossover = new Crossover<Measurable>() {
 
             @Override
-            public Child<Measurable> cross(Measurable sourceX, Measurable sourceY, Random random) {
-                return new Child<Measurable>(sourceX, sourceY);
+            public List<Measurable> cross(Measurable sourceX, Measurable sourceY, Random random) {
+                List<Measurable> c = new ArrayList<>();
+                c.add(sourceX);
+                c.add(sourceY);
+                return c;
             }
+
         };
 
         PairwiseCrossover<Measurable> pairwiseCrossover = new PairwiseCrossover<>(crossover);
-        
+
         for (int m = 0; m <= n; m++) {
             List<Measurable> res = pairwiseCrossover.perfom(list, m);
-            System.out.println(res.size() + " "+res);
+            System.out.println(res.size() + " " + res);
         }
 
     }

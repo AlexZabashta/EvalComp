@@ -1,5 +1,7 @@
 package eval_comp.lab1.gen_op;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import eval_comp.lab1.Instance;
@@ -19,11 +21,14 @@ public class TwoPointCrossover implements Crossover<Instance> {
     }
 
     @Override
-    public Child<Instance> cross(Instance sourceX, Instance sourceY, Random random) {
+    public List<Instance> cross(Instance sourceX, Instance sourceY, Random random) {
+        List<Instance> result = new ArrayList<Instance>();
         boolean[] x = sourceX.getChromosome();
         boolean[] y = sourceY.getChromosome();
         perform(x, y, random);
-        return new Child<>(new Instance(x), new Instance(y));
+        result.add(new Instance(x));
+        result.add(new Instance(y));
+        return result;
     }
 
 }

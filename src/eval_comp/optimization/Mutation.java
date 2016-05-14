@@ -1,9 +1,10 @@
 package eval_comp.optimization;
 
+import java.util.List;
 import java.util.Random;
 
 public interface Mutation<T> {
 
-    public  T mutate(T source, Random random);
+    public List<T> mutate(T source, Random random);
 
 }

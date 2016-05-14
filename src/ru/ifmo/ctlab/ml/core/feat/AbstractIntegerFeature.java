@@ -1,7 +1,7 @@
 package ru.ifmo.ctlab.ml.core.feat;
 
-import ru.ifmo.ctlab.ml.core.val.Instance;
-import ru.ifmo.ctlab.ml.core.val.NumericValue;
+import ru.ifmo.ctlab.ml.core.data.Instance;
+import ru.ifmo.ctlab.ml.core.data.val.NumericValue;
 
 public abstract class AbstractIntegerFeature extends AbstractNumericFeature implements IntegerFeature {
 
