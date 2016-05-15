@@ -18,7 +18,7 @@ import eval_comp.optimization.result.Result;
 import eval_comp.optimization.result.StoppingCriterion;
 import misc.FolderUtils;
 
-public class Exp13 {
+public class Exp14 {
 
     public static void main(String[] args) throws IOException {
         String res = FolderUtils.clearOrCreate();
@@ -33,16 +33,20 @@ public class Exp13 {
         Mutation<Instance> mutation = new InvertSegment();
         GeneticSearch<Instance> search = new GeneticSearch<>(50, crossover, mutation);
 
-        int m = 50;
+        int m = 500;
 
         Random random = new Random();
 
+        int chromosomeLength = 20;
+        int generationSize = 30;
+
         try (PrintWriter out = new PrintWriter(new File(res + "depend.txt"))) {
-            for (int n = 5; n <= 100; n += 5) {
-                int generationSize = n;
-                int chromosomeLength = 20;
+
+            for (int step = 0; step <= generationSize; step++) {
+                double p = 1.0 * step / generationSize;
+
                 int numOfMut = (generationSize + 9) / 10;
-                int numOfChild = (generationSize + 1) / 2;
+                int numOfChild = step;
 
                 double time = 0;
                 int k = 0;
@@ -58,11 +62,12 @@ public class Exp13 {
                         time += 1;
                     }
                     ++k;
+
                 }
 
                 time /= k;
-                if (time < 50)
-                    System.out.printf(Locale.ENGLISH, "(%d; %.3f)%n", n, time);
+
+                System.out.printf(Locale.ENGLISH, "(%.3f; %.3f)%n", p, time);
             }
         }
 
