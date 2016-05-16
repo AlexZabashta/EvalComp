@@ -23,6 +23,12 @@ public class FolderUtils {
             if (!root.isDirectory()) {
                 throw new RuntimeException(resultPath + " does not lead to a folder");
             }
+
+            if (clearLast && last == -1) {
+                removeFolder(root);
+                createFolder(root);
+            }
+
         } else {
             createFolder(root);
         }

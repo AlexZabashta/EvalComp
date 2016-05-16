@@ -15,6 +15,25 @@ public class FeaturePoint<T> extends Point implements Measurable {
         this.fitnessFunction = 0;
     }
 
+    public FeaturePoint(Point target, T object, MetaFeaturesExtractor<T> extractor, double[] std) {
+        super(extractor.extract(object));
+        double sumOfSquares = 0;
+        this.target = target;
+        this.object = object;
+
+        int d = dimension();
+
+        if (std.length != d || target.dimension() != d) {
+            throw new IllegalArgumentException("Point has different dimension");
+        }
+
+        for (int i = 0; i < d; i++) {
+            double diff = (super.coordinate(i) - target.coordinate(i)) / std[i];
+            sumOfSquares += diff * diff;
+        }
+        this.fitnessFunction = -Math.sqrt(sumOfSquares);
+    }
+
     public FeaturePoint(Point target, FeaturePoint<T> featurePoint, double[] std) {
         super(featurePoint.coordinates());
         double sumOfSquares = 0;
@@ -31,7 +50,7 @@ public class FeaturePoint<T> extends Point implements Measurable {
             double diff = (super.coordinate(i) - target.coordinate(i)) / std[i];
             sumOfSquares += diff * diff;
         }
-        this.fitnessFunction = Math.sqrt(sumOfSquares);
+        this.fitnessFunction = -Math.sqrt(sumOfSquares);
     }
 
     @Override

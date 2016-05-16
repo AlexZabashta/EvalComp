@@ -1,4 +1,4 @@
-package eval_comp.lab1;
+package eval_comp.lab2;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,9 +11,8 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-import eval_comp.lab1.gen_op.InvertSegment;
-import eval_comp.lab1.gen_op.TwoPointCrossover;
-import eval_comp.lab1.misc.TernarySearch;
+import eval_comp.lab1.GeneticSearch;
+import eval_comp.lab1.PlotBuilder;
 import eval_comp.optimization.Crossover;
 import eval_comp.optimization.Mutation;
 import eval_comp.optimization.result.ReachMaxValue;
@@ -21,33 +20,32 @@ import eval_comp.optimization.result.Result;
 import eval_comp.optimization.result.StoppingCriterion;
 import misc.FolderUtils;
 
-public class Exp13 {
+public class Exp15 {
 
     public static void main(String[] args) throws IOException {
         String res = FolderUtils.clearOrCreate();
 
-        FitnessFunction fitnessFunction = new FitnessFunction();
-        Crossover<Instance> crossover = new TwoPointCrossover();
+        Crossover<Instance> crossover = new NumCrossover();
 
-        double maxX = TernarySearch.maximize(-9, -8, fitnessFunction);
-        double maxY = fitnessFunction.evaluate(maxX);
-
-        StoppingCriterion<Instance> sc = new ReachMaxValue<>(maxY - 0.1);
-        Mutation<Instance> mutation = new InvertSegment();
+        StoppingCriterion<Instance> sc = new ReachMaxValue<>(0 - 0.1);
+        Mutation<Instance> mutation = new NumMutation();
         GeneticSearch<Instance> search = new GeneticSearch<>(50, crossover, mutation);
 
-        int m = 50;
+        int m = 500;
+        boolean dim = false;
 
         Random random = new Random();
+
+        int generationSize = 30;
 
         int width = 1024, height = 1024;
 
         double[] array = new double[1024];
         int len = 0;
-        for (int n = 5; n <= 100; n += 5) {
-            int generationSize = n;
-            int chromosomeLength = 20;
-            int numOfMut = (generationSize + 9) / 10;
+        for (int step = 0; step <= generationSize; step++) {
+            double p = 1.0 * step / generationSize;
+
+            int numOfMut = step;
             int numOfChild = (generationSize + 1) / 2;
 
             double time = 0;
@@ -56,7 +54,7 @@ public class Exp13 {
                 List<Instance> generation = new ArrayList<Instance>();
 
                 for (int i = 0; i < generationSize; i++) {
-                    generation.add(new Instance(random, chromosomeLength));
+                    generation.add(new Instance(random, dim));
                 }
 
                 Result<Instance> result = search.search(generation, numOfChild, numOfMut, sc, null);
@@ -64,11 +62,12 @@ public class Exp13 {
                     time += 1;
                 }
                 ++k;
+
             }
 
             time /= k;
             array[len++] = time;
-            System.out.printf(Locale.ENGLISH, "(%d; %.3f)%n", n, time);
+            System.out.printf(Locale.ENGLISH, "(%.3f; %.3f)%n", p, time);
         }
         BufferedImage image = PlotBuilder.simpleSplot(Arrays.copyOf(array, len), width, height);
         ImageIO.write(image, "png", new File(res + "plot.png"));

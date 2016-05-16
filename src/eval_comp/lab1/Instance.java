@@ -21,10 +21,6 @@ public class Instance implements Measurable {
 
     public final double x, y;
 
-    public int length() {
-        return chromosome.length;
-    }
-
     public Instance(boolean[] chromosome) {
         this.chromosome = chromosome;
         x = fitnessFunction.encode(chromosome);
@@ -49,6 +45,11 @@ public class Instance implements Measurable {
         return true;
     }
 
+    @Override
+    public double fitnessFunction() {
+        return y;
+    }
+
     public boolean[] getChromosome() {
         return chromosome.clone();
     }
@@ -59,6 +60,10 @@ public class Instance implements Measurable {
         int result = 1;
         result = prime * result + Arrays.hashCode(chromosome);
         return result;
+    }
+
+    public int length() {
+        return chromosome.length;
     }
 
     public Instance mutation(Random random) {
@@ -77,10 +82,5 @@ public class Instance implements Measurable {
         }
 
         return new Instance(mutant);
-    }
-
-    @Override
-    public double fitnessFunction() {
-        return y;
     }
 }

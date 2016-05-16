@@ -16,11 +16,11 @@ import eval_comp.optimization.result.StoppingCriterion;
 
 public class GeneticSearch<T extends Measurable> {
 
-    final SelectBest<T> selectBest;
-    final RouletteWheel<T> rouletteWheel;
-    final MutationStep<T> mutationStep;
     final PairwiseCrossover<T> crossoverStep;
     final int maxIter;
+    final MutationStep<T> mutationStep;
+    final RouletteWheel<T> rouletteWheel;
+    final SelectBest<T> selectBest;
 
     public GeneticSearch(int maxIter, Crossover<T> crossover, Mutation<T> mutation) {
         this.maxIter = maxIter;
